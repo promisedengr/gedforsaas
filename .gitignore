@@ -1,0 +1,6 @@
+/.settings
+/.mvn
+/.idea
+/.apt_generated
+/.apt_generated_tests
+/target

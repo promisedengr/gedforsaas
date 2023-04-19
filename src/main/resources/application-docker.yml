@@ -1,0 +1,81 @@
+spring:
+  jpa:
+    properties:
+      hibernate:
+        globally_quoted_identifiers: 'true'
+        format_sql: 'true'
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        jdbc:
+          lob:
+            non_contextual_creation: 'true'
+      org:
+        hibernate:
+          envers:
+            revision_field_name: revision_id
+            revision_type_field_name: revision_type
+            audit_strategy: org.hibernate.envers.strategy.ValidityAuditStrategy
+            modified_flag_suffix: _mod
+    hibernate:
+      ddl-auto: update
+    defer-datasource-initialization: 'true'
+    show-sql: 'false'
+  sql:
+    init:
+      schema-locations: classpath:database/acl-schema.sql
+      data-locations: classpath:database/data.sql
+      mode: always
+  mail:
+    properties:
+      mail:
+        smtp:
+          ssl:
+            trust: smtp.gmail.com
+          starttls:
+            enable: 'true'
+            required: 'true'
+          auth: 'true'
+          STARTTLS:
+            enable: 'true'
+    username: ahmed.dokumentive@gmail.com
+    port: '587'
+    host: smtp.gmail.com
+    password: ugcboehzlbudgnpy
+  main:
+    allow-bean-definition-overriding: 'true'
+  devtools:
+    restart:
+      enabled: 'false'
+  datasource:
+    password: postgres
+    username: postgres
+    url: jdbc:postgresql://postgres:5437/gedforsaasdb2?useSSL=false&allowPublicKeyRetrieval=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+  jackson:
+    serialization:
+      FAIL_ON_EMPTY_BEANS: 'false'
+primary:
+  link:
+    nodeValue: http://localhost:8050/api/v1/
+    for:
+      reset:
+        password: http://localhost:4200/reset/password/
+server:
+  port: '8050'
+google:
+  oauth:
+    callback:
+      uri: http://localhost:4200/dashboards/profile
+  secret:
+    key:
+      path: classpath:keys/client_secret.json
+  credentials:
+    folder:
+      path: file:C://keySecret
+    file: file:C://keySecret/StoredCredential
+application:
+  translation:
+    properties:
+      baseName: messages
+confirmation:
+  mail:
+    template:
+      path: classpath:templates/confirmationMail.ftl

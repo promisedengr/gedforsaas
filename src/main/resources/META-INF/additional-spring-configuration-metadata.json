@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "google.credentials.folder.path",
+      "type": "java.lang.String",
+      "description": "Description for google.credentials.folder.path."
+  }
+] }
